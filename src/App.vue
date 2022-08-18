@@ -1,30 +1,68 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view />
 </template>
+
+<script>
+export default {};
+</script>
 
 <style>
 #app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #377ee8,
+    #5e75f5,
+    #8966fa,
+    #b44ef7,
+    #de12eb
+  );
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 5s ease infinite;
+  -moz-animation: AnimationName 5s ease infinite;
+  animation: AnimationName 5s ease infinite;
 }
 
-nav {
-  padding: 30px;
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 24%;
+  }
+  50% {
+    background-position: 100% 77%;
+  }
+  100% {
+    background-position: 0% 24%;
+  }
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 24%;
+  }
+  50% {
+    background-position: 100% 77%;
+  }
+  100% {
+    background-position: 0% 24%;
+  }
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 24%;
+  }
+  50% {
+    background-position: 100% 77%;
+  }
+  100% {
+    background-position: 0% 24%;
+  }
 }
 </style>
