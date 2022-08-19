@@ -13,19 +13,23 @@
 
 <script>
 import { ref } from "vue";
-import { signInWithEmailAndPassword } from "@firebase/auth";
-import { auth } from "@/firebase/config";
 import useLogin from "@/composable/useLogin";
 
 export default {
-  setup() {
+  emits: ["enterChatroom"],
+  setup(props, { emit }) {
     let email = ref("");
     let password = ref("");
 
     let { err, LOGIN } = useLogin();
 
     let login = async () => {
-      await LOGIN(email.value, password.value);
+      let res = await LOGIN(email.value, password.value);
+      console.log(res);
+      if (res) {
+        console.log("gg");
+        emit("enterChatroom");
+      }
     };
     return { err, email, password, login };
   },

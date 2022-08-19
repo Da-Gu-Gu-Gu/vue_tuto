@@ -12,6 +12,7 @@ const LOGIN = async (email, password) => {
       throw new Error("Something Wrong!");
     }
     console.log(res.user);
+    return res;
   } catch (error) {
     console.log(error.message);
     err.value = error.message;

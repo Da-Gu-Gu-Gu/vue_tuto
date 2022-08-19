@@ -16,7 +16,8 @@
 import { ref } from "vue";
 import useSignUp from "../composable/useSignup";
 export default {
-  setup() {
+  emits: ["enterChatroom"],
+  setup(props, { emit }) {
     let name = ref("");
     let email = ref("");
     let password = ref("");
@@ -24,8 +25,10 @@ export default {
     let { err, signUp } = useSignUp();
 
     let signup = async () => {
-      console.log(email.value);
-      await signUp(name.value, email.value, password.value);
+      let res = await signUp(name.value, email.value, password.value);
+      if (res) {
+        emit("enterChatroom");
+      }
     };
 
     console.log(err);

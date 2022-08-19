@@ -1,4 +1,4 @@
-import { Firebase, initializeApp } from "firebase/app";
+import { firebase, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
@@ -17,7 +17,7 @@ const db = getFirestore(app);
 let auth = getAuth(app);
 // let timestamps =
 console.log(app);
-console.log(Firebase);
+console.log(firebase);
 // app.firestore().FieldValue.serverTimestamps;
 
 export { db, auth };

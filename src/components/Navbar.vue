@@ -1,15 +1,39 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" v-if="user">
     <div>
-      <h1>👋 Hi,</h1>
-      <p>Login as <span>hello@gmail.com</span></p>
+      <h1>👋 Hi, {{ user.displayName }}</h1>
+      <p>
+        Login as <span>{{ user.email }}</span>
+      </p>
     </div>
-    <div class="logout">logout</div>
+    <div class="logout" @click="logout">logout</div>
   </div>
 </template>
 
 <script>
-export default {};
+import { auth } from "@/firebase/config";
+import { ref } from "vue";
+import getUser from "../composable/getUser";
+
+export default {
+  setup() {
+    let err = ref(null);
+
+    let { user } = getUser();
+
+    let logout = async () => {
+      try {
+        await auth.signOut();
+        console.log("logout");
+      } catch (error) {
+        err.value = error.message;
+        console.log(error.message);
+      }
+    };
+
+    return { user, logout };
+  },
+};
 </script>
 
 <style scoped>

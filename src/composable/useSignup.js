@@ -14,6 +14,7 @@ const signUp = async (name, email, password) => {
     await updateProfile(res.user, {
       displayName: name,
     });
+    return res;
   } catch (error) {
     err.value = error.message;
   }
